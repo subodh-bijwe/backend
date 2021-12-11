@@ -23,11 +23,9 @@ def predict():
     input_six = request.form['6']
     input_seven = request.form['7']
 
-    setup_df = pd.DataFrame([input_one, input_two, input_three, input_four, input_five, input_six, input_seven])
+    setup_df = pd.DataFrame([pd.Series([input_one, input_two, input_three, input_four, input_five, input_six, input_seven])])
     charges_prediction = model.predict(setup_df)
-    output_prediction = '{0:.{1}}'.format(charges_prediction[0][1], 2)
-    output_prediction = str(float(output_prediction)*100)+'%'
-    return render_template('result.html', pred=f'The predicted charges are: {output_prediction}')
-
+    print(charges_prediction[0])
+    return str(charges_prediction[0])
 if __name__ == '__main__':
     app.run(debug=True)
