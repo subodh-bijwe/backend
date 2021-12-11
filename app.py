@@ -20,10 +20,8 @@ def predict():
     input_three = request.form['3']
     input_four = request.form['4']
     input_five = request.form['5']
-    input_six = request.form['6']
-    input_seven = request.form['7']
 
-    setup_df = pd.DataFrame([pd.Series([input_one, input_two, input_three, input_four, input_five, input_six, input_seven])])
+    setup_df = pd.DataFrame([pd.Series([input_one, input_two, input_three, input_four, input_five])])
     charges_prediction = model.predict(setup_df)
     print(charges_prediction[0])
     return str(charges_prediction[0])

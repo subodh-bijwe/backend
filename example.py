@@ -25,7 +25,8 @@ cat_variable.append("have_children")
 from sklearn.preprocessing import LabelEncoder
 lb = LabelEncoder()
 df[cat_variable] = df[cat_variable].apply(lambda col: lb.fit_transform(col.astype(str)))
-X = df.drop(columns=["charges","region"])
+# 'age', 'sex', 'bmi', 'children', 'smoker', 'age_range','have_children'
+X = df.drop(columns=["charges","region", "age_range", "have_children"])
 y = df["charges"]
 print(X.columns)
 X_train,X_test,y_train,y_test = train_test_split(X,y, test_size=0.2)
