@@ -1,9 +1,11 @@
 from flask import Flask, request, url_for, redirect, render_template
 import pandas as pd
 import pickle
+from flask_core import CORS
 
 app = Flask(__name__)
 
+CORS(app)
 model = pickle.load(open("model_weights.pkl", "rb"))
 
 
